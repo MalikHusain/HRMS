@@ -1,0 +1,120 @@
+export const candidates = [
+  {
+    id: "1",
+    name: "Priya Sharma",
+    email: "priya.sharma@email.com",
+    phone: "+91 98765 43210",
+    position: "Frontend Developer",
+    department: "Engineering",
+    status: "offered",
+    appliedDate: "2026-02-15",
+    documents: [
+      { name: "Resume_Priya.pdf", size: "2.1 MB", type: "resume", uploadedAt: "2026-02-15" },
+      { name: "Aadhar_Card.pdf", size: "1.2 MB", type: "id", uploadedAt: "2026-02-20" },
+    ],
+  },
+  {
+    id: "2",
+    name: "Rahul Verma",
+    email: "rahul.verma@email.com",
+    phone: "+91 87654 32109",
+    position: "Backend Engineer",
+    department: "Engineering",
+    status: "interviewed",
+    appliedDate: "2026-02-20",
+    documents: [
+      { name: "Resume_Rahul.pdf", size: "1.8 MB", type: "resume", uploadedAt: "2026-02-20" },
+    ],
+  },
+  {
+    id: "3",
+    name: "Anita Desai",
+    email: "anita.desai@email.com",
+    phone: "+91 76543 21098",
+    position: "HR Manager",
+    department: "Human Resources",
+    status: "onboarded",
+    appliedDate: "2026-01-10",
+    documents: [
+      { name: "Resume_Anita.pdf", size: "2.5 MB", type: "resume", uploadedAt: "2026-01-10" },
+      { name: "PAN_Card.pdf", size: "0.8 MB", type: "id", uploadedAt: "2026-01-15" },
+      { name: "Offer_Letter_Signed.pdf", size: "1.1 MB", type: "offer", uploadedAt: "2026-01-25" },
+    ],
+  },
+  {
+    id: "4",
+    name: "Vikram Patel",
+    email: "vikram.patel@email.com",
+    phone: "+91 65432 10987",
+    position: "Product Designer",
+    department: "Design",
+    status: "applied",
+    appliedDate: "2026-03-01",
+    documents: [
+      { name: "Portfolio_Vikram.pdf", size: "5.2 MB", type: "resume", uploadedAt: "2026-03-01" },
+    ],
+  },
+  {
+    id: "5",
+    name: "Sneha Reddy",
+    email: "sneha.reddy@email.com",
+    phone: "+91 54321 09876",
+    position: "Data Analyst",
+    department: "Analytics",
+    status: "rejected",
+    appliedDate: "2026-02-05",
+    documents: [
+      { name: "Resume_Sneha.pdf", size: "1.6 MB", type: "resume", uploadedAt: "2026-02-05" },
+    ],
+  },
+  {
+    id: "6",
+    name: "Arjun Nair",
+    email: "arjun.nair@email.com",
+    phone: "+91 43210 98765",
+    position: "DevOps Engineer",
+    department: "Engineering",
+    status: "interviewed",
+    appliedDate: "2026-02-28",
+    documents: [
+      { name: "Resume_Arjun.pdf", size: "1.9 MB", type: "resume", uploadedAt: "2026-02-28" },
+    ],
+  },
+  {
+    id: "7",
+    name: "Meera Gupta",
+    email: "meera.gupta@email.com",
+    phone: "+91 32109 87654",
+    position: "Marketing Lead",
+    department: "Marketing",
+    status: "offered",
+    appliedDate: "2026-02-18",
+    documents: [
+      { name: "Resume_Meera.pdf", size: "2.0 MB", type: "resume", uploadedAt: "2026-02-18" },
+      { name: "ID_Proof.pdf", size: "0.9 MB", type: "id", uploadedAt: "2026-02-25" },
+    ],
+  },
+  {
+    id: "8",
+    name: "Karthik Iyer",
+    email: "karthik.iyer@email.com",
+    phone: "+91 21098 76543",
+    position: "QA Engineer",
+    department: "Engineering",
+    status: "applied",
+    appliedDate: "2026-03-05",
+    documents: [
+      { name: "Resume_Karthik.pdf", size: "1.4 MB", type: "resume", uploadedAt: "2026-03-05" },
+    ],
+  },
+];
+
+export const statusConfig = {
+  applied: { label: "Applied", className: "bg-info/15 text-info" },
+  interviewed: { label: "Interviewed", className: "bg-warning/15 text-warning" },
+  offered: { label: "Offered", className: "bg-primary/15 text-primary" },
+  onboarded: { label: "Onboarded", className: "bg-success/15 text-success" },
+  rejected: { label: "Rejected", className: "bg-destructive/15 text-destructive" },
+};
+
+export const departments = ["Engineering", "Human Resources", "Design", "Analytics", "Marketing"];
