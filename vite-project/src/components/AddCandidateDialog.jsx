@@ -31,15 +31,17 @@ export function AddCandidateDialog() {
 
     try {
       // Sending form data to backend
-      await axios.post("http://localhost:5000/api/candidates", {
-        name,
-        email,
-        phone,
-        position,
-        department,
-        // You can handle resume later
-      });
-
+  axios.post(
+  "https://hrms-backend-2mr23cvcr-malikhusains-projects.vercel.app/api/candidates",
+  {
+    name,
+    email,
+    phone,
+    position,
+    department,
+    // You can handle resume later
+  }
+);
       toast.success("Candidate added successfully!");
       setOpen(false);
 

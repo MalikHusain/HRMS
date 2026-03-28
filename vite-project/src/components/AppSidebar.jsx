@@ -5,6 +5,7 @@ import {
   Settings,
   UserCircle,
   Building2,
+  CalendarDays,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
@@ -27,6 +28,7 @@ const mainNav = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Candidates", url: "/candidates", icon: Users },
   { title: "Offer Letters", url: "/offer-letters", icon: FileText },
+   { title: "Leaves",      url: "/leaves",      icon: CalendarDays    },
 ];
 
 const settingsNav = [

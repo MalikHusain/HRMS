@@ -1,25 +1,12 @@
-import express  from "express";
-import cors     from "cors";
-import bcrypt   from "bcryptjs";
-import jwt      from "jsonwebtoken";
-import dotenv   from "dotenv";
-import pool     from "./db.js";                          // ← pool lives here now
-import attendanceRoutes from "./routes/attendance.js";
-import candidateRoutes from "./routes/candidates.js";
-import { encrypt, decrypt } from "./utils/crypto.js";
-import offerLetterRoutes from "./routes/offerLetter.js";
-
-dotenv.config();
-
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-app.use("/api/attendance", attendanceRoutes);
-app.use("/api/candidates", candidateRoutes);
-app.use("/uploads", express.static("uploads"));
-app.use("/api/offer-letter", offerLetterRoutes);
-
+// ─────────────────────────────────────────────────────────────────────────────
+// server.js AUTH ROUTE PATCHES  
+// Add this import near the top of server.js (with other imports):
+//
+//   import { encrypt, decrypt } from "./utils/crypto.js";
+//
+// Then replace your existing /api/auth/register and /api/auth/login routes
+// with these patched versions:
+// ─────────────────────────────────────────────────────────────────────────────
 
 // POST /api/auth/register  ── encrypts email + phone before storing
 app.post("/api/auth/register", async (req, res) => {
@@ -67,9 +54,9 @@ app.post("/api/auth/register", async (req, res) => {
 
 // POST /api/auth/login  ── must compare against encrypted email in DB
 app.post("/api/auth/login", async (req, res) => {
-  const { email, employee_id, password } = req.body;
-if ((!email && !employee_id) || !password)
-  return res.status(400).json({ error: "credentials and password are required" });
+  const { email, password } = req.body;
+  if (!email || !password)
+    return res.status(400).json({ error: "email and password are required" });
 
   try {
     // Fetch all users and find the one whose decrypted email matches
@@ -79,11 +66,9 @@ if ((!email && !employee_id) || !password)
     );
 
     const user = all.rows.find(u => {
-  try {
-    if (employee_id) return u.employee_id === employee_id;
-    return decrypt(u.email) === email;
-  } catch { return false; }
-});
+      try { return decrypt(u.email) === email; } catch { return false; }
+    });
+
     if (!user) return res.status(401).json({ error: "Invalid email or password" });
 
     const valid = await bcrypt.compare(password, user.password);
@@ -116,10 +101,4 @@ if ((!email && !employee_id) || !password)
     console.error(err);
     res.status(500).json({ error: "Server error" });
   }
-}); 
-
-/* ================= START SERVER ================= */
-
-app.listen(5000, () =>
-  console.log("Server running on http://localhost:5000")
-);
+});
